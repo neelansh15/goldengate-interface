@@ -23,7 +23,7 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
     <div className="relative group">
       {/* Token Select Button */}
       <TokenSelectModal field={field}>
-        <button className="absolute top-4 right-4 z-10 bg-muted/80 hover:bg-muted border border-border/50 rounded-full py-2 px-4 flex items-center gap-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md backdrop-blur-sm">
+        <button className="absolute top-4 right-4 z-10 bg-muted/80 hover:bg-muted border border-border/50 rounded-full py-2 px-4 flex items-center gap-2 cursor-pointer transition-colors duration-200 backdrop-blur-sm">
           <span className="font-semibold text-sm">{currency.symbol}</span>
           <ChevronDownIcon className="w-4 h-4" />
         </button>
