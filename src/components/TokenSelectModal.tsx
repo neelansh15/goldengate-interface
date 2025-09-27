@@ -18,7 +18,8 @@ interface TokenSelectModalProps extends PropsWithChildren {
   field: Field;
 }
 export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
-  const chainId = useChainId();
+  // const chainId = useChainId();
+  const chainId = 56;
 
   const setInputCurrency = useSetAtom(inputCurrencyAtom);
   const setOutputCurrency = useSetAtom(outputCurrencyAtom);
@@ -35,6 +36,7 @@ export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
             {tokenList[chainId as keyof typeof tokenList].map((token) => (
               <DialogClose>
                 <div
+                  key={token.chainId + token.address}
                   className={
                     bitcount.className +
                     " flex justify-between items-center hover:bg-slate-100 dark:hover:bg-slate-900 p-2 rounded-full transition-all cursor-pointer"

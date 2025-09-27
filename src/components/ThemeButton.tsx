@@ -16,13 +16,13 @@ export const ThemeButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="outline" 
+        <Button
+          variant="outline"
           size="icon"
           className="bg-card/80 hover:bg-accent border-border/50 dark:border-border/70 backdrop-blur-sm transition-colors duration-200 hover:border-primary/50 dark:bg-card/90 dark:hover:bg-accent/80"
         >
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90 text-foreground" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 text-foreground" />
+          <Sun className="  scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90 text-foreground" />
+          <Moon className="absolute   scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 text-foreground" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
