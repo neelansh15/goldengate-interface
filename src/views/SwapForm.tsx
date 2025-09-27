@@ -1,4 +1,5 @@
 import { BatchSizeInput } from "@/components/BatchSizeInput";
+import { CommitButton } from "@/components/CommitButton";
 import { CurrencyInput } from "@/components/CurrencyInput";
 import { IntervalInput } from "@/components/IntervalInput";
 import { LimitPriceInput } from "@/components/LimitPriceInput";
@@ -44,9 +45,7 @@ export const SwapForm = () => {
 
         {/* Place Order Button */}
         <div className="mt-6">
-          <button className="w-full bg-primary hover:bg-primary/90 disabled:bg-muted disabled:text-muted-foreground rounded-xl py-3.5 px-4 font-medium text-primary-foreground cursor-pointer transition-colors duration-150 disabled:cursor-not-allowed text-base">
-            Place Limit Order
-          </button>
+          <CommitButton  />
         </div>
 
         {/* <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/30">
