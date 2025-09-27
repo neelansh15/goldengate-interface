@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { SwapForm } from "@/views/SwapForm";
 
 export default function Home() {
   return (
     <div>
-      GoldenGate Bridge
-      <Button>Hey there</Button>
+      <SwapForm />
     </div>
   );
 }
