@@ -1,13 +1,35 @@
+import { inputCurrencyAtom, outputCurrencyAtom } from "@/atoms/currencyAtoms";
 import { BatchSizeInput } from "@/components/BatchSizeInput";
 import { CommitButton } from "@/components/CommitButton";
 import { CurrencyInput } from "@/components/CurrencyInput";
 import { IntervalInput } from "@/components/IntervalInput";
 import { LimitPriceInput } from "@/components/LimitPriceInput";
 import { MaxIntervalInput } from "@/components/MaxIntervalInput";
+import { tokenList } from "@/constants/tokenList";
 import { Field } from "@/types";
+import { useAtom } from "jotai";
 import { ArrowDownIcon } from "lucide-react";
+import { useEffect } from "react";
+import { useChainId } from "wagmi";
 
 export const SwapForm = () => {
+  const chainId = useChainId();
+
+  const [inputCurrency, setInputCurrency] = useAtom(inputCurrencyAtom);
+  const [outputCurrency, setOutputCurrency] = useAtom(outputCurrencyAtom);
+
+  // // Reset tokens on network change
+  useEffect(() => {
+    if (
+      chainId &&
+      inputCurrency.chainId !== chainId &&
+      outputCurrency.chainId !== chainId
+    ) {
+      setInputCurrency(tokenList[chainId as keyof typeof tokenList][0]);
+      setOutputCurrency(tokenList[chainId as keyof typeof tokenList][1]);
+    }
+  }, [chainId]);
+  
   return (
     <div className="w-full max-w-[480px] px-4 sm:px-0">
       <div className="bg-card/90 dark:bg-card/95 backdrop-blur-xl border border-border/50 dark:border-border/60 rounded-3xl p-4 sm:p-6">
@@ -45,7 +67,7 @@ export const SwapForm = () => {
 
         {/* Place Order Button */}
         <div className="mt-6">
-          <CommitButton  />
+          <CommitButton />
         </div>
 
         {/* <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/30">
