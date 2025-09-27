@@ -1,4 +1,5 @@
 import { CurrencyInput } from "@/components/CurrencyInput";
+import { LimitPriceInput } from "@/components/LimitPriceInput";
 import { Field } from "@/types";
 import { ArrowDownIcon } from "lucide-react";
 
@@ -16,10 +17,13 @@ export const SwapForm = () => {
           <div>
             <CurrencyInput field={Field.CURRENCY_B} label="Buy" />
           </div>
+          <div>
+            <LimitPriceInput />
+          </div>
         </div>
         <div className="mt-4">
           <button className="w-full bg-slate-500 hover:bg-slate-600 border border-slate-400 rounded-xl py-3 font-bold cursor-pointer transition-all">
-            Swap
+            Place Order
           </button>
         </div>
       </div>

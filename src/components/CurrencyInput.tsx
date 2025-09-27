@@ -27,14 +27,18 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
           <ChevronDownIcon />
         </button>
       </TokenSelectModal>
+
       <input
         value={value}
-        onInput={() =>
+        onInput={(e) => {
+          const value = Number(e.currentTarget.value);
+          if (isNaN(value)) return;
+
           setValue({
-            value: value,
+            value: value.toString(),
             field,
-          })
-        }
+          });
+        }}
         className="col-span-3 bg-neutral-950 border border-neutral-800 rounded-xl w-full text-left font-bold text-5xl pt-12 pb-3 pr-44 pl-4 font-mono transition-all"
         placeholder="0"
       />
