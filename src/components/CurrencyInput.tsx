@@ -20,29 +20,44 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
   const setValue = useSetAtom(setTypedValueAtom);
 
   return (
-    <div className="relative">
+    <div className="relative group">
+      {/* Token Select Button */}
       <TokenSelectModal field={field}>
-        <button className="font-bold col-span-1 text-left bg-slate-500 hover:bg-slate-600 border border-slate-400 rounded-full py-1 px-4 absolute top-1/3 right-4 flex items-center gap-1 cursor-pointer transition-all">
-          <span className="mt-0.5">{currency.symbol}</span>
-          <ChevronDownIcon />
+        <button className="absolute top-4 right-4 z-10 bg-muted/80 hover:bg-muted border border-border/50 rounded-full py-2 px-4 flex items-center gap-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md backdrop-blur-sm">
+          <span className="font-semibold text-sm">{currency.symbol}</span>
+          <ChevronDownIcon className="w-4 h-4" />
         </button>
       </TokenSelectModal>
 
-      <input
-        value={value}
-        onInput={(e) => {
-          const value = Number(e.currentTarget.value);
-          if (isNaN(value)) return;
+      {/* Input Container */}
+      <div className="bg-input/50 hover:bg-input/70 dark:bg-input/30 dark:hover:bg-input/50 border border-border/30 dark:border-border/40 rounded-2xl transition-all duration-200 group-hover:border-border/60 dark:group-hover:border-border/70 backdrop-blur-sm">
+        <input
+          value={value}
+          onInput={(e) => {
+            const value = Number(e.currentTarget.value);
+            if (isNaN(value)) return;
 
-          setValue({
-            value: value.toString(),
-            field,
-          });
-        }}
-        className="col-span-3 bg-neutral-950 border border-neutral-800 rounded-xl w-full text-left font-bold text-5xl pt-12 pb-3 pr-44 pl-4 font-mono transition-all"
-        placeholder="0"
-      />
-      {label && <div className="absolute top-3 left-3">{label}</div>}
+            setValue({
+              value: value.toString(),
+              field,
+            });
+          }}
+          className="w-full bg-transparent text-2xl sm:text-3xl font-bold pt-14 pb-4 pr-24 sm:pr-32 pl-4 sm:pl-6 outline-none placeholder:text-muted-foreground/50 text-foreground"
+          placeholder="0.00"
+        />
+        
+        {/* Label */}
+        {label && (
+          <div className="absolute top-4 left-4 sm:left-6 text-sm font-medium text-muted-foreground">
+            {label}
+          </div>
+        )}
+        
+        {/* Balance (placeholder) */}
+        <div className="absolute bottom-4 left-4 sm:left-6 text-xs text-muted-foreground">
+          Balance: 0.00
+        </div>
+      </div>
     </div>
   );
 };
