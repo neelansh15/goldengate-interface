@@ -14,7 +14,9 @@ export const LimitPriceInput = ({}: LimitPriceInputProps) => {
       {/* Price Indicator */}
       <div className="absolute top-4 right-4 z-10 bg-muted/80 border border-border/50 rounded-full py-2 px-3 flex items-center gap-2 backdrop-blur-sm">
         <TrendingUpIcon className="w-4 h-4 text-primary" />
-        <span className="font-semibold text-sm">{outputCurrency.symbol} per {inputCurrency.symbol}</span>
+        <span className="font-semibold text-sm">
+          {outputCurrency.symbol} per {inputCurrency.symbol}
+        </span>
       </div>
 
       {/* Input Container */}
@@ -22,23 +24,22 @@ export const LimitPriceInput = ({}: LimitPriceInputProps) => {
         <input
           value={limitPrice}
           onInput={(e) => {
-            const value = Number(e.currentTarget.value);
-            if (isNaN(value) || value === 0) {
+            const value = e.currentTarget.value;
+            if (value === "0") {
               setLimitPrice("");
               return;
             }
 
-            setLimitPrice(value.toString());
+            setLimitPrice(value);
           }}
           className="w-full bg-transparent text-2xl sm:text-3xl font-bold pt-14 pb-4 pr-24 sm:pr-32 pl-4 sm:pl-6 outline-none placeholder:text-muted-foreground/50 text-foreground"
           placeholder="0.00"
         />
-        
+
         {/* Label */}
         <div className="absolute top-4 left-4 sm:left-6 text-sm font-medium text-muted-foreground">
           Limit Price
         </div>
-        
       </div>
     </div>
   );

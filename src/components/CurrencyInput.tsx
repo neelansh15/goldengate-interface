@@ -34,11 +34,11 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
         <input
           value={value}
           onInput={(e) => {
-            const value = Number(e.currentTarget.value);
-            if (isNaN(value)) return;
+            const typedValue = e.currentTarget.value;
+            if (typedValue === "0") return;
 
             setValue({
-              value: value.toString(),
+              value: typedValue,
               field,
             });
           }}

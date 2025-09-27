@@ -1,6 +1,8 @@
 import { BatchSizeInput } from "@/components/BatchSizeInput";
 import { CurrencyInput } from "@/components/CurrencyInput";
+import { IntervalInput } from "@/components/IntervalInput";
 import { LimitPriceInput } from "@/components/LimitPriceInput";
+import { MaxIntervalInput } from "@/components/MaxIntervalInput";
 import { Field } from "@/types";
 import { ArrowDownIcon } from "lucide-react";
 
@@ -29,9 +31,14 @@ export const SwapForm = () => {
           <div className="relative mt-2">
             <LimitPriceInput />
           </div>
-          
+
           <div className="relative mt-2">
             <BatchSizeInput />
+          </div>
+
+          <div className="relative mt-2 flex items-center gap-2">
+            <IntervalInput />
+            <MaxIntervalInput />
           </div>
         </div>
 
