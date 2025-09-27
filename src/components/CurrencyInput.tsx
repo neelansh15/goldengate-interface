@@ -1,25 +1,32 @@
 import { ChevronDownIcon } from "lucide-react";
+import { TokenSelectModal } from "./TokenSelectModal";
+import { inputCurrencyAtom, outputCurrencyAtom } from "@/atoms/currencyAtoms";
+import { useAtomValue } from "jotai";
 
 interface CurrencyInputProps {
-  // TODO: add types later from a DEX's js sdk
-  currency: any;
+  type: "input" | "output";
   value?: any;
   onInput?: any;
   label?: any;
 }
 export const CurrencyInput = ({
-  currency,
+  type,
   value,
   onInput,
   label,
 }: CurrencyInputProps) => {
+  const currency = useAtomValue(
+    type === "input" ? inputCurrencyAtom : outputCurrencyAtom
+  );
+
   return (
     <div className="relative">
-      {/* open token select modal later */}
-      <button className="font-bold col-span-1 text-left bg-slate-500 hover:bg-slate-600 border border-slate-400 rounded-full py-1 px-4 absolute top-1/3 right-4 flex items-center gap-1 cursor-pointer transition-all">
-        <span className="mt-0.5">{currency.symbol}</span>
-        <ChevronDownIcon />
-      </button>
+      <TokenSelectModal type={type}>
+        <button className="font-bold col-span-1 text-left bg-slate-500 hover:bg-slate-600 border border-slate-400 rounded-full py-1 px-4 absolute top-1/3 right-4 flex items-center gap-1 cursor-pointer transition-all">
+          <span className="mt-0.5">{currency.symbol}</span>
+          <ChevronDownIcon />
+        </button>
+      </TokenSelectModal>
       <input
         value={value}
         onInput={onInput}
