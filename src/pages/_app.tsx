@@ -5,6 +5,7 @@ import type { AppProps } from "next/app";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/Navbar";
+import TickerTape from "@/components/TickerTape";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         >
           <Navbar />
+          <TickerTape />
           <Component {...pageProps} />
         </div>
       </Providers>
