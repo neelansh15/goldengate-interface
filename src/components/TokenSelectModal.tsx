@@ -9,13 +9,14 @@ import {
 } from "@/components/ui/dialog";
 import { bitcount } from "@/constants/font";
 import { tokenList } from "@/constants/tokenList";
+import { Field } from "@/types";
 import { useSetAtom } from "jotai";
 import { PropsWithChildren } from "react";
 
 interface TokenSelectModalProps extends PropsWithChildren {
-  type: "input" | "output";
+  field: Field;
 }
-export function TokenSelectModal({ children, type }: TokenSelectModalProps) {
+export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
   const setInputCurrency = useSetAtom(inputCurrencyAtom);
   const setOutputCurrency = useSetAtom(outputCurrencyAtom);
 
@@ -35,7 +36,7 @@ export function TokenSelectModal({ children, type }: TokenSelectModalProps) {
                   " flex justify-between items-center hover:bg-slate-900 p-2 rounded-full transition-all cursor-pointer"
                 }
                 onClick={() => {
-                  type === "input"
+                  field === Field.CURRENCY_A
                     ? setInputCurrency(token)
                     : setOutputCurrency(token);
                 }}

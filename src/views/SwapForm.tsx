@@ -1,4 +1,5 @@
 import { CurrencyInput } from "@/components/CurrencyInput";
+import { Field } from "@/types";
 import { ArrowDownIcon } from "lucide-react";
 
 export const SwapForm = () => {
@@ -7,13 +8,13 @@ export const SwapForm = () => {
       <div className="max-w-[480px] mx-auto bg-neutral-900 rounded-xl p-4">
         <div className="flex flex-col gap-2 relative">
           <div>
-            <CurrencyInput type="input" label="Sell" />
+            <CurrencyInput field={Field.CURRENCY_A} label="Sell" />
           </div>
           <button className="mx-auto mt-5 absolute top-1/3 left-[46%] z-10 bg-black p-1 border border-slate-800 rounded-xl cursor-pointer hover:bg-slate-600 transition-all">
             <ArrowDownIcon />
           </button>
           <div>
-            <CurrencyInput type="output" label="Buy" />
+            <CurrencyInput field={Field.CURRENCY_B} label="Buy" />
           </div>
         </div>
         <div className="mt-4">
