@@ -1,17 +1,20 @@
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { limitPriceAtom } from "@/atoms/fieldAtoms";
+import { inputCurrencyAtom, outputCurrencyAtom } from "@/atoms/currencyAtoms";
 import { TrendingUpIcon } from "lucide-react";
 
 interface LimitPriceInputProps {}
 export const LimitPriceInput = ({}: LimitPriceInputProps) => {
   const [limitPrice, setLimitPrice] = useAtom(limitPriceAtom);
+  const inputCurrency = useAtomValue(inputCurrencyAtom);
+  const outputCurrency = useAtomValue(outputCurrencyAtom);
 
   return (
     <div className="relative group">
       {/* Price Indicator */}
       <div className="absolute top-4 right-4 z-10 bg-muted/80 border border-border/50 rounded-full py-2 px-3 flex items-center gap-2 backdrop-blur-sm">
         <TrendingUpIcon className="w-4 h-4 text-primary" />
-        <span className="font-semibold text-sm">USD</span>
+        <span className="font-semibold text-sm">{outputCurrency.symbol} per {inputCurrency.symbol}</span>
       </div>
 
       {/* Input Container */}
@@ -36,10 +39,6 @@ export const LimitPriceInput = ({}: LimitPriceInputProps) => {
           Limit Price
         </div>
         
-        {/* Market Price (placeholder) */}
-        <div className="absolute bottom-4 left-4 sm:left-6 text-xs text-muted-foreground">
-          Market: $2,342.56
-        </div>
       </div>
     </div>
   );

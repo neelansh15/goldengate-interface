@@ -42,7 +42,7 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
               field,
             });
           }}
-          className="w-full bg-transparent text-2xl sm:text-3xl font-bold pt-14 pb-4 pr-24 sm:pr-32 pl-4 sm:pl-6 outline-none placeholder:text-muted-foreground/50 text-foreground"
+          className="w-full bg-transparent text-2xl sm:text-3xl font-bold pt-14 pb-8 pr-24 sm:pr-32 pl-4 sm:pl-6 outline-none placeholder:text-muted-foreground/50 text-foreground"
           placeholder="0.00"
         />
         
