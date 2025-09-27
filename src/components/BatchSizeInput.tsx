@@ -33,7 +33,7 @@ export const BatchSizeInput = ({}: BatchSizeInputProps) => {
 
         {/* Label */}
         <div className="absolute top-4 left-4 sm:left-6 text-sm font-medium text-muted-foreground">
-          Batch Size
+          Total Trades
         </div>
       </div>
     </div>
