@@ -71,7 +71,7 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
         )}
 
         {isConnected && (
-          <div className="absolute bottom-4 left-4 sm:left-6 text-xs text-muted-foreground">
+          <div className="absolute bottom-3 left-4 sm:left-6 text-xs text-muted-foreground">
             Balance: {formatUnits(balance ?? 0n, currency.decimals)}
           </div>
         )}
