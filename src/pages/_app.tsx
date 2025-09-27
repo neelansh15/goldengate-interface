@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Providers } from "@/components/Providers";
+import { Navbar } from "@/components/Navbar";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +15,12 @@ export default function App({ Component, pageProps }: AppProps) {
       disableTransitionOnChange
     >
       <Providers>
-        <div className={bitcount.className}>
+        <div
+          className={
+            "min-h-screen relative overflow-hidden " + bitcount.className
+          }
+        >
+          <Navbar />
           <Component {...pageProps} />
         </div>
       </Providers>

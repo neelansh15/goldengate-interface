@@ -39,13 +39,12 @@ export const SwapForm = () => {
           </button>
         </div>
 
-        {/* Order Info */}
-        <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/30">
+        {/* <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/30">
           <div className="flex justify-between items-center text-sm">
             <span className="text-muted-foreground">Network Fee</span>
             <span className="font-medium">~$0.50</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
               <div
                 className={
                   bitcount.className +
-                  " flex justify-between items-center hover:bg-slate-900 p-2 rounded-full transition-all cursor-pointer"
+                  " flex justify-between items-center hover:bg-slate-100 dark:hover:bg-slate-900 p-2 rounded-full transition-all cursor-pointer"
                 }
                 onClick={() => {
                   field === Field.CURRENCY_A
