@@ -37,7 +37,7 @@ function TickerTape() {
               "title": "Polygon"
             }
           ],
-          "colorTheme": "light",
+          "colorTheme": "dark",
           "locale": "en",
           "largeChartUrl": "",
           "isTransparent": false,
