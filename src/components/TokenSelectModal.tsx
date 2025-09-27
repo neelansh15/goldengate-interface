@@ -18,8 +18,7 @@ interface TokenSelectModalProps extends PropsWithChildren {
   field: Field;
 }
 export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
-  // const chainId = useChainId();
-  const chainId = 56;
+  const chainId = useChainId();
 
   const setInputCurrency = useSetAtom(inputCurrencyAtom);
   const setOutputCurrency = useSetAtom(outputCurrencyAtom);

@@ -4,18 +4,26 @@ import { inputCurrencyAtom, outputCurrencyAtom } from "@/atoms/currencyAtoms";
 import { useAtomValue, useSetAtom } from "jotai";
 import { formattedAmountsAtom, setTypedValueAtom } from "@/atoms/inputAtoms";
 import { Field } from "@/types";
+import { useAccount } from "wagmi";
+import { useCurrencyBalance } from "@/hooks/useCurrencyBalance";
+import { formatUnits, parseUnits } from "viem";
 
 interface CurrencyInputProps {
   field: Field;
   label?: any;
 }
 export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
+  const { isConnected } = useAccount();
+
+  // Use 1inch api to fetch balance
   const currency = useAtomValue(
     field === Field.CURRENCY_A ? inputCurrencyAtom : outputCurrencyAtom
   );
 
   const formattedAmounts = useAtomValue(formattedAmountsAtom);
   const value = formattedAmounts[field];
+
+  const { data: balance } = useCurrencyBalance(currency);
 
   const setValue = useSetAtom(setTypedValueAtom);
 
@@ -31,7 +39,9 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
             height="20px"
             className="rounded-full"
           />
-          <span className="font-semibold text-sm mt-0.5">{currency?.symbol}</span>
+          <span className="font-semibold text-sm mt-0.5">
+            {currency?.symbol}
+          </span>
           <ChevronDownIcon className="w-4 h-4" />
         </button>
       </TokenSelectModal>
@@ -60,10 +70,11 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
           </div>
         )}
 
-        {/* Balance (placeholder) */}
-        <div className="absolute bottom-4 left-4 sm:left-6 text-xs text-muted-foreground">
-          Balance: 0.00
-        </div>
+        {isConnected && (
+          <div className="absolute bottom-4 left-4 sm:left-6 text-xs text-muted-foreground">
+            Balance: {formatUnits(balance ?? 0n, currency.decimals)}
+          </div>
+        )}
       </div>
     </div>
   );
