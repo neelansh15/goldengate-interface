@@ -11,7 +11,10 @@ export const LimitPriceInput = ({}: LimitPriceInputProps) => {
         value={limitPrice}
         onInput={(e) => {
           const value = Number(e.currentTarget.value);
-          if (isNaN(value)) return;
+          if (isNaN(value) || value === 0) {
+            setLimitPrice("");
+            return;
+          }
 
           setLimitPrice(value.toString());
         }}

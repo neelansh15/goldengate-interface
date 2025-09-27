@@ -13,7 +13,7 @@ const dependentAmountAtom = atom((get) => {
   const typedValue = get(typedValueAtom);
   const limitPrice = get(limitPriceAtom);
 
-  if (!typedValue) return "";
+  if (!typedValue || !limitPrice) return "";
 
   if (independentField === Field.CURRENCY_A) {
     return BN(typedValue).multipliedBy(limitPrice).toFixed(6);

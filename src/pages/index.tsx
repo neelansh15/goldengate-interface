@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-neutral-900 to-slate-950 backdrop-blur-2xl">
       <Navbar />
-      <div className="pt-16">
+      <div>
         <SwapForm />
       </div>
     </div>
