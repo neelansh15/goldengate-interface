@@ -12,11 +12,14 @@ import { tokenList } from "@/constants/tokenList";
 import { Field } from "@/types";
 import { useSetAtom } from "jotai";
 import { PropsWithChildren } from "react";
+import { useChainId } from "wagmi";
 
 interface TokenSelectModalProps extends PropsWithChildren {
   field: Field;
 }
 export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
+  const chainId = useChainId();
+
   const setInputCurrency = useSetAtom(inputCurrencyAtom);
   const setOutputCurrency = useSetAtom(outputCurrencyAtom);
 
@@ -28,32 +31,35 @@ export function TokenSelectModal({ children, field }: TokenSelectModalProps) {
           <DialogHeader>
             <h1 className={bitcount.className + " text-2xl"}>Select a token</h1>
           </DialogHeader>
-          {tokenList.map((token) => (
-            <DialogClose>
-              <div
-                className={
-                  bitcount.className +
-                  " flex justify-between items-center hover:bg-slate-100 dark:hover:bg-slate-900 p-2 rounded-full transition-all cursor-pointer"
-                }
-                onClick={() => {
-                  field === Field.CURRENCY_A
-                    ? setInputCurrency(token)
-                    : setOutputCurrency(token);
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <img
-                    src={token.image}
-                    alt={token.symbol}
-                    width="24px"
-                    height="24px"
-                  />
-                  <p className="font-bold mt-1">{token.symbol}</p>
+          <div className="max-h-[300px] overflow-y-auto">
+            {tokenList[chainId as keyof typeof tokenList].map((token) => (
+              <DialogClose>
+                <div
+                  className={
+                    bitcount.className +
+                    " flex justify-between items-center hover:bg-slate-100 dark:hover:bg-slate-900 p-2 rounded-full transition-all cursor-pointer"
+                  }
+                  onClick={() => {
+                    field === Field.CURRENCY_A
+                      ? setInputCurrency(token)
+                      : setOutputCurrency(token);
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={token.logoURI}
+                      alt={token.symbol}
+                      width="24px"
+                      height="24px"
+                      className="rounded-full"
+                    />
+                    <p className="font-bold mt-1">{token.symbol}</p>
+                  </div>
+                  <div>{/* balance here perhaps */}</div>
                 </div>
-                <div>{/* balance here perhaps */}</div>
-              </div>
-            </DialogClose>
-          ))}
+              </DialogClose>
+            ))}
+          </div>
         </DialogContent>
       </form>
     </Dialog>

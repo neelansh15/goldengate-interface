@@ -7,12 +7,12 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
 import { WagmiProvider } from "wagmi";
-import { mainnet, polygon } from "wagmi/chains";
+import { bsc, mainnet, polygon } from "wagmi/chains";
 
 const config = getDefaultConfig({
   appName: "Golden Gate",
   projectId: "YOUR_PROJECT_ID",
-  chains: [mainnet, polygon],
+  chains: [bsc, mainnet, polygon],
   ssr: true,
 });
 

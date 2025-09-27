@@ -15,7 +15,7 @@ export const LimitPriceInput = ({}: LimitPriceInputProps) => {
       <div className="absolute top-4 right-4 z-10 bg-muted/80 border border-border/50 rounded-full py-2 px-3 flex items-center gap-2 backdrop-blur-sm">
         <TrendingUpIcon className="w-4 h-4 text-primary" />
         <span className="font-semibold text-sm">
-          {outputCurrency.symbol} per {inputCurrency.symbol}
+          {outputCurrency?.symbol} per {inputCurrency?.symbol}
         </span>
       </div>
 

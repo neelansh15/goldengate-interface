@@ -24,7 +24,14 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
       {/* Token Select Button */}
       <TokenSelectModal field={field}>
         <button className="absolute top-4 right-4 z-10 bg-muted/80 hover:bg-muted border border-border/50 rounded-full py-2 px-4 flex items-center gap-2 cursor-pointer transition-colors duration-200 backdrop-blur-sm">
-          <span className="font-semibold text-sm">{currency.symbol}</span>
+          <img
+            src={currency?.logoURI}
+            alt={currency?.symbol}
+            width="20px"
+            height="20px"
+            className="rounded-full"
+          />
+          <span className="font-semibold text-sm mt-0.5">{currency?.symbol}</span>
           <ChevronDownIcon className="w-4 h-4" />
         </button>
       </TokenSelectModal>
@@ -45,14 +52,14 @@ export const CurrencyInput = ({ field, label }: CurrencyInputProps) => {
           className="w-full bg-transparent text-2xl sm:text-3xl font-bold pt-14 pb-8 pr-24 sm:pr-32 pl-4 sm:pl-6 outline-none placeholder:text-muted-foreground/50 text-foreground"
           placeholder="0.00"
         />
-        
+
         {/* Label */}
         {label && (
           <div className="absolute top-4 left-4 sm:left-6 text-sm font-medium text-muted-foreground">
             {label}
           </div>
         )}
-        
+
         {/* Balance (placeholder) */}
         <div className="absolute bottom-4 left-4 sm:left-6 text-xs text-muted-foreground">
           Balance: 0.00
