@@ -11,8 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
-      enableSystem
+      defaultTheme="dark"
       disableTransitionOnChange
     >
       <Providers>
