@@ -1,9 +1,11 @@
+import { Navbar } from "@/components/Navbar";
 import { SwapForm } from "@/views/SwapForm";
 
 export default function Home() {
   return (
-    <div>
-      <div className="grid place-items-center">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-900 to-slate-950 backdrop-blur-2xl">
+      <Navbar />
+      <div className="pt-16">
         <SwapForm />
       </div>
     </div>
