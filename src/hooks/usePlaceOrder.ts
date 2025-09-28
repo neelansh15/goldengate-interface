@@ -15,9 +15,10 @@ import { Field, Order } from "@/types";
 import { formattedAmountsAtom } from "@/atoms/inputAtoms";
 import { Address, parseUnits, stringify } from "viem";
 import { API } from "@/constants/address";
+import toast from "react-hot-toast";
 
 export const usePlaceOrder = () => {
-  const { data: walletClient } = useWalletClient();
+  // const { data: walletClient } = useWalletClient();
   const { address, chainId } = useAccount();
 
   const inputCurrency = useAtomValue(inputCurrencyAtom);
@@ -66,6 +67,12 @@ export const usePlaceOrder = () => {
           "Content-Type": "application/json",
         },
       });
+
+      if(result.ok){
+        toast.success("Order placed successfully");
+      } else {
+        toast.error("Failed to place order");
+      }
 
       console.log("placeOrder Result", result);
 

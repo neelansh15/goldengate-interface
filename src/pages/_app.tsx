@@ -6,6 +6,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/Navbar";
 import TickerTape from "@/components/TickerTape";
+import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Navbar />
           <TickerTape />
           <Component {...pageProps} />
+          <Toaster />
         </div>
       </Providers>
     </ThemeProvider>
