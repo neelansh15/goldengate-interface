@@ -51,7 +51,7 @@ export const usePlaceOrder = () => {
           formattedAmounts[Field.CURRENCY_B],
           outputCurrency.decimals
         ).toString(),
-        batch_size: Number(batchSize),
+        batch_size: Number(batchSize) * 10 ** 15, // 10 ** 15 is precision hardcoded for now
         interval: Number(interval),
         max_interval: Number(maxInterval),
       };
@@ -61,6 +61,9 @@ export const usePlaceOrder = () => {
       const result = await fetch(API + "/order", {
         method: "POST",
         body: stringify(order),
+        headers: {
+          'Content-Type': 'application/json',
+        }
       });
 
       console.log("placeOrder Result", result);
