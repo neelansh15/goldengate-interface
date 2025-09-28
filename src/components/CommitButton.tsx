@@ -5,9 +5,9 @@ import { useAtomValue } from "jotai";
 export const CommitButton = (props: React.ComponentProps<"button">) => {
   const fieldsValid = useAtomValue(fieldsValidAtom);
 
-  const disabled = !fieldsValid;
-
-  const { placeOrder } = usePlaceOrder();
+  const { placeOrder, isPlacingOrder } = usePlaceOrder();
+  
+  const disabled = !fieldsValid || isPlacingOrder;
 
   return (
     <button
@@ -16,7 +16,7 @@ export const CommitButton = (props: React.ComponentProps<"button">) => {
       onClick={placeOrder}
       {...props}
     >
-      Place Limit Order
+      {isPlacingOrder ? "Placing Order..." : "Place Limit Order"}
     </button>
   );
 };

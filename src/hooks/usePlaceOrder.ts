@@ -7,7 +7,7 @@ import {
 } from "@/atoms/fieldAtoms";
 
 import { useAtomValue } from "jotai";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 // Dynamic import to avoid JSON import attribute issues
 import { useAccount, useChainId, useWalletClient } from "wagmi";
@@ -20,6 +20,8 @@ import toast from "react-hot-toast";
 export const usePlaceOrder = () => {
   // const { data: walletClient } = useWalletClient();
   const { address, chainId } = useAccount();
+
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
   const inputCurrency = useAtomValue(inputCurrencyAtom);
   const outputCurrency = useAtomValue(outputCurrencyAtom);
@@ -59,6 +61,9 @@ export const usePlaceOrder = () => {
 
       console.log("placeOrder", order);
 
+      toast.success("Placing order...");
+      setIsPlacingOrder(true);
+
       // Post order to BE to let it handle submission via 1inch sdk
       const result = await fetch(API + "/order", {
         method: "POST",
@@ -73,6 +78,8 @@ export const usePlaceOrder = () => {
       } else {
         toast.error("Failed to place order");
       }
+
+      setIsPlacingOrder(false);
 
       console.log("placeOrder Result", result);
 
@@ -120,6 +127,7 @@ export const usePlaceOrder = () => {
       // await sdk.submitOrder(sdkOrder, signature);
     } catch (error) {
       console.error("Error placing order:", error);
+      setIsPlacingOrder(false);
       throw error;
     }
   }, [
@@ -133,5 +141,6 @@ export const usePlaceOrder = () => {
 
   return {
     placeOrder,
+    isPlacingOrder,
   };
 };
