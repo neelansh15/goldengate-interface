@@ -2,6 +2,8 @@
 
 A sophisticated Time-Weighted Average Price (TWAP) trading interface built for decentralized exchanges. This application enables users to execute large trades efficiently by breaking them into smaller batches over time, reducing market impact and achieving better average prices.
 
+Backend repo: https://github.com/Kiwi-Protocol/goldengate-service
+
 ## 🌟 Features
 
 ### Core TWAP Functionality
