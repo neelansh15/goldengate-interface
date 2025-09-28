@@ -219,3 +219,11 @@ body {
     border-color: var(--primary) !important;
   }
 }
+
+table th {
+  @apply text-left;
+}
+
+table td, th {
+  @apply p-3;
+}

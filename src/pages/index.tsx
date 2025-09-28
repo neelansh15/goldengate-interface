@@ -1,15 +1,21 @@
 import TradingViewChart from "@/components/TradingViewChart";
+import { UserOrders } from "@/components/UserOrders";
 import { SwapForm } from "@/views/SwapForm";
 
 export default function Home() {
   return (
-    <div className="md:mx-8 pt-6 grid md:grid-cols-3 gap-4">
-      <div className="col-span-2">
-        <TradingViewChart />
+    <>
+      <div className="md:mx-8 pt-6 grid md:grid-cols-3 gap-4">
+        <div className="col-span-2">
+          <TradingViewChart />
+        </div>
+        <div className="flex justify-center">
+          <SwapForm />
+        </div>
       </div>
-      <div className="flex justify-center">
-        <SwapForm />
+      <div className="mt-8 pb-16">
+        <UserOrders />
       </div>
-    </div>
+    </>
   );
 }

@@ -34,8 +34,8 @@ export const usePlaceOrder = () => {
 
     try {
       // Dynamic import to avoid JSON import attribute issues
-      const { FetchProviderConnector, MakerTraits, randBigInt, Sdk } =
-        await import("@1inch/limit-order-sdk");
+      // const { FetchProviderConnector, MakerTraits, randBigInt, Sdk } =
+      //   await import("@1inch/limit-order-sdk");
 
       // Send money to Operator
       const order: Order = {
@@ -51,19 +51,20 @@ export const usePlaceOrder = () => {
           formattedAmounts[Field.CURRENCY_B],
           outputCurrency.decimals
         ).toString(),
-        batch_size: Number(batchSize) * 10 ** 15, // 10 ** 15 is precision hardcoded for now
+        total_trades: Number(batchSize),
         interval: Number(interval),
         max_interval: Number(maxInterval),
       };
 
       console.log("placeOrder", order);
 
+      // Post order to BE to let it handle submission via 1inch sdk
       const result = await fetch(API + "/order", {
         method: "POST",
         body: stringify(order),
         headers: {
-          'Content-Type': 'application/json',
-        }
+          "Content-Type": "application/json",
+        },
       });
 
       console.log("placeOrder Result", result);

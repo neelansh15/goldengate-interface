@@ -15,7 +15,48 @@ export type Order = {
   currency_1: Address;
   amount_0: string;
   amount_1: string;
-  batch_size: number | undefined;
+  total_trades: number | undefined;
   interval: number | undefined;
   max_interval: number | undefined;
 };
+
+export interface HistoryOrder {
+  id: number
+  created_at: string
+  chain_id: number
+  amount_0: string
+  amount_1: string
+  total_trades: number
+  interval: number
+  address: string
+  currency_0: string
+  currency_1: string
+  status: string
+  signature: any
+  max_interval: number
+  executions: Executions
+}
+
+export interface Executions {
+  error: any
+  data: Daum[]
+  count: any
+  status: number
+  statusText: string
+}
+
+export interface Daum {
+  id: number
+  created_at: string
+  order_id: number
+  chain_id: number
+  amount_0: string
+  amount_1: string
+  start_time: string
+  address: string
+  currency_0: string
+  currency_1: string
+  signature: any
+  status: string
+}
+
